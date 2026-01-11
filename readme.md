@@ -7,3 +7,5 @@ if needed you can edit the file as required.
 ## Calculator Project
 
 This calculator supports basic arithmetic operations.
+#diff
+This project uses Git diff for practice.
