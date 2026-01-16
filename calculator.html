@@ -94,6 +94,8 @@
   <div class="calculator">
     <input type="text" id="result" disabled />
     <p id="history"></p>
+<ul id="historyList" style="list-style:none; padding:0; margin-top:5px;"></ul>
+
 
     <div class="buttons">
       <button onclick="toggleDarkMode()">🌙</button>
@@ -125,24 +127,42 @@
   <script>
     const result = document.getElementById("result");
     const historyText = document.getElementById("history");
+    const historyList = document.getElementById("historyList");
+
 
     function appendValue(val) {
       result.value += val;
     }
 
     function calculate() {
-      try {
-        historyText.innerText = "Last calculation: " + result.value;
-        result.value = eval(result.value);
-      } catch {
-        result.value = "Error";
-      }
-    }
+  try {
+    const expression = result.value;
+    const answer = eval(expression);
+
+    historyText.innerText = "Last calculation: " + expression;
+
+    const li = document.createElement("li");
+    li.style.cursor = "pointer";
+    li.style.color = "#555";
+    li.innerText = expression + " = " + answer;
+
+    li.onclick = () => {
+      result.value = expression;
+    };
+
+    historyList.prepend(li);
+    result.value = answer;
+  } catch {
+    result.value = "Error";
+  }
+}
+
 
     function clearResult() {
-      result.value = "";
-      historyText.innerText = "";
-    }
+  result.value = "";
+  historyText.innerText = "";
+  historyList.innerHTML = "";
+}
 
     function backspace() {
       result.value = result.value.slice(0, -1);
