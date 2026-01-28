@@ -10,7 +10,7 @@ pipeline {
 
     stage('Checkout Code') {
       steps {
-        git 'https://github.com/<your-username>/simplybyte-calculator.git'
+        git 'https://github.com/bindupriyan/simplybyte-calculator.git'
       }
     }
 

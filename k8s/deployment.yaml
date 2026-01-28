@@ -13,8 +13,8 @@ spec:
         app: calculator
     spec:
       containers:
-       - name: calculator
-         image: bindupriyan/calculator:latest
-         imagePullPolicy: Always
-         ports:
-         - containerPort: 5000
+      - name: calculator
+        image: bindupriyan/simplybyte-calculator:IMAGE_TAG
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
